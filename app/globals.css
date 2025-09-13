@@ -1,26 +1,33 @@
 @import "tailwindcss";
 
+/* Definirea variabilelor de culoare (token-urilor) pentru tema default (light) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f5f5; /* Un alb-gri */
+  --foreground: #121212; /* Un negru */
+  --primary-accent: #c28f43; /* O nuanță de auriu/chihlimbar */
+  --secondary-accent: #eaddc7; /* Un bej deschis pentru text subtil */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Suprascrierea variabilelor pentru tema dark */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #121212;
+    --foreground: #f5f5f5;
+    --primary-accent: #d4a35d; /* O nuanță puțin mai vibrantă pe fundal închis */
+    --secondary-accent: #b0a18f;
   }
 }
 
+/* Aplicarea variabilelor și setarea fonturilor de bază */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  color: var(--primary-accent); /* Folosim accentul primar pentru titluri */
 }
