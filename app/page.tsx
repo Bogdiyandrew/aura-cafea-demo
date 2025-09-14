@@ -4,7 +4,7 @@ import ProductCard from "./components/ProductCard";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-// ... (datele simulate și variantele de animație rămân la fel) ...
+// Datele simulate
 const featuredProducts = [
   { name: 'Ethiopia Yirgacheffe', origin: 'Etiopia', price: 55.00, imageUrl: '/images/ethiopia-yirgacheffe.jpg', slug: 'ethiopia-yirgacheffe' },
   { name: 'Colombia Supremo', origin: 'Columbia', price: 49.50, imageUrl: '/images/colombia-supremo.jpg', slug: 'colombia-supremo' },
@@ -15,14 +15,14 @@ const testimonials = [
     { quote: "Procesul de comandă a fost extrem de simplu, iar livrarea rapidă...", author: "Elena Ionescu", title: "Client Fidel" },
     { quote: "Aura a devenit ritualul meu de dimineață. O adevărată încântare.", author: "Mihai Georgescu", title: "Barista Acasă" }
 ];
+
+// Variantele de animație
 const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } }};
 const itemVariants = { hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1 }};
 
 export default function HomePage() {
   return (
-    // Acum <main> nu mai are padding, deci putem scoate acest div
-    <>
-      {/* --- HERO SECTION FULL-SCREEN (fără container) --- */}
+    <main>
       <section className="relative flex h-screen items-center justify-center">
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline poster="/images/coffee-poster.jpg" className="h-full w-full object-cover">
@@ -41,7 +41,6 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* --- Container pentru restul conținutului paginii (cu padding) --- */}
       <div className="bg-[var(--background)] relative z-10 space-y-24 py-24">
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={containerVariants}>
           <h2 className="text-4xl font-bold text-center mb-12">Recomandările Noastre</h2>
@@ -58,7 +57,8 @@ export default function HomePage() {
           <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
                   <motion.div key={index} variants={itemVariants} className="bg-white/5 border border-white/20 rounded-2xl p-8 backdrop-blur-lg">
-                      <p className="font-sans text-gray-300 italic mb-6">"{testimonial.quote}"</p>
+                      {/* AICI ESTE CORECTURA: Am înlocuit " cu &ldquo; și &rdquo; */}
+                      <p className="font-sans text-gray-300 italic mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
                       <p className="font-sans font-bold text-white">{testimonial.author}</p>
                       <p className="font-sans text-sm text-gray-400">{testimonial.title}</p>
                   </motion.div>
@@ -66,6 +66,6 @@ export default function HomePage() {
           </div>
         </motion.section>
       </div>
-    </>
+    </main>
   );
 }

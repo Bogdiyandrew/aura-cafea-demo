@@ -8,7 +8,7 @@
     --primary-accent: #8A63D2; /* Un violet vibrant */
     --secondary-accent: #4A90E2; /* Un albastru-cyan */
     
-    --font-playfair: '__Playfair_Display_102737', 'serif'; /* Numele generate de Next.js */
+    --font-playfair: '__Playfair_Display_102737', 'serif';
     --font-lato: '__Lato_321e8e', 'sans-serif';
   }
 }
@@ -49,6 +49,8 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-playfair), serif;
-    color: white; /* Titlurile vor fi albe pentru contrast maxim */
+    color: white;
   }
 }
+
+/* AICI ESTE CORECTURA: Am șters complet regula ".custom-input" */
