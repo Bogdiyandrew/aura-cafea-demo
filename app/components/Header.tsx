@@ -2,22 +2,78 @@
 
 import Link from 'next/link';
 import { useCart } from '@/app/context/CartContext';
+import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { motion, Variants } from 'framer-motion';
+
+// NOU: Am definit variantele de animație separat pentru a fi mai lizibile
+const headerVariants: Variants = {
+  // Starea inițială, înainte de animație (complet deasupra ecranului și invizibil)
+  hidden: { y: '-100%', opacity: 0 },
+  // Starea finală, după animație
+  visible: {
+    y: '0%',
+    opacity: 1,
+    transition: {
+      duration: 0.8, // Durată mai lungă pentru o mișcare mai lină
+      ease: [0.6, 0.05, 0.01, 0.99] // Un "ease" custom pentru un efect fluid, non-liniar
+    }
+  }
+};
+
 
 const Header = () => {
   const { cartItems } = useCart();
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const pathname = usePathname();
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: "/", name: "Acasă" },
+    { href: "/products", name: "Produse" },
+    { href: "/about", name: "Povestea Noastră" },
+    { href: "/contact", name: "Contact" },
+  ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/20 bg-white/5 backdrop-blur-lg">
+    <motion.header 
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
+      // MODIFICARE: Tranziție CSS mai lentă (500ms) pentru apariția fundalului la scroll
+      className={`sticky top-0 z-50 transition-all duration-500 ${
+        hasScrolled 
+        ? 'bg-black/40 backdrop-blur-lg border-b border-white/10' 
+        : 'bg-transparent border-b border-transparent'
+      }`}
+    >
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold font-serif text-white tracking-wider">
           AURA
         </Link>
-        <div className="hidden md:flex items-center space-x-8 text-gray-200 font-sans">
-          <Link href="/" className="hover:text-white transition-colors duration-300">Acasă</Link>
-          <Link href="/products" className="hover:text-white transition-colors duration-300">Produse</Link>
-          <Link href="/about" className="hover:text-white transition-colors duration-300">Povestea Noastră</Link>
-          <Link href="/contact" className="hover:text-white transition-colors duration-300">Contact</Link>
+        
+        <div className="hidden md:flex items-center space-x-8 text-gray-300 font-sans">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="relative hover:text-white transition-colors duration-300">
+              {link.name}
+              {pathname === link.href && (
+                <motion.div 
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--primary-accent)]"
+                  layoutId="underline"
+                  // NOU: Animație de tip "spring" pentru un efect elastic și natural
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </Link>
+          ))}
         </div>
         
         <Link 
@@ -27,7 +83,7 @@ const Header = () => {
           Coș ({totalItems})
         </Link>
       </nav>
-    </header>
+    </motion.header>
   );
 };
 
