@@ -1,7 +1,22 @@
 import type { Metadata } from "next";
+import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header"; // Importăm Header
-import Footer from "./components/Footer"; // Importăm Footer
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { CartProvider } from "./context/CartContext";
+import { Toaster } from 'react-hot-toast';
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-playfair',
+});
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-lato',
+});
 
 export const metadata: Metadata = {
   title: "Aura - Magazin Online de Cafea Artizanală",
@@ -14,15 +29,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ro">
-      <body className="antialiased"> {/* am scos fontul de aici pentru că l-am setat global */}
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow container mx-auto px-6 py-12">
-            {children}
-          </main>
-          <Footer />
-        </div>
+    <html lang="ro" className={`${playfair.variable} ${lato.variable}`}>
+      <body className="antialiased">
+        <CartProvider>
+          <Toaster 
+            position="top-center"
+            toastOptions={{
+              style: {
+                background: '#333',
+                color: '#fff',
+              },
+            }}
+          />
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            {/* AICI ESTE SCHIMBAREA: Am eliminat clasele de pe <main> */}
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

@@ -1,34 +1,54 @@
 @import "tailwindcss";
 
-/* Definirea variabilelor de culoare (token-urilor) pentru tema default (light) */
-:root {
-  --background: #f5f5f5; /* Un alb-gri */
-  --foreground: #121212; /* Un negru */
-  --primary-accent: #c28f43; /* O nuanță de auriu/chihlimbar */
-  --secondary-accent: #eaddc7; /* Un bej deschis pentru text subtil */
-}
-
-/* Suprascrierea variabilelor pentru tema dark */
-@media (prefers-color-scheme: dark) {
+/* 1. Definirea noii palete de culori și a fonturilor */
+@layer base {
   :root {
-    --background: #121212;
-    --foreground: #f5f5f5;
-    --primary-accent: #d4a35d; /* O nuanță puțin mai vibrantă pe fundal închis */
-    --secondary-accent: #b0a18f;
+    --background: #0D0B14; /* Un indigo foarte închis */
+    --foreground: #E0E0E0; /* Un alb-gri pentru text */
+    --primary-accent: #8A63D2; /* Un violet vibrant */
+    --secondary-accent: #4A90E2; /* Un albastru-cyan */
+    
+    --font-playfair: '__Playfair_Display_102737', 'serif'; /* Numele generate de Next.js */
+    --font-lato: '__Lato_321e8e', 'sans-serif';
   }
 }
 
-/* Aplicarea variabilelor și setarea fonturilor de bază */
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Georgia', 'Times New Roman', serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* 2. Implementarea fundalului animat "Aurora" */
+@layer base {
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 10% 20%, rgba(138, 99, 210, 0.2) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(74, 144, 226, 0.2) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(138, 99, 210, 0.15) 0%, transparent 20%);
+    z-index: -1;
+    animation: aurora 20s infinite linear;
+    pointer-events: none;
+  }
+
+  @keyframes aurora {
+    0% { transform: rotate(0deg) scale(1.5); }
+    50% { transform: rotate(180deg) scale(1.6); }
+    100% { transform: rotate(360deg) scale(1.5); }
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  color: var(--primary-accent); /* Folosim accentul primar pentru titluri */
+/* 3. Stilurile de bază actualizate */
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-lato), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), serif;
+    color: white; /* Titlurile vor fi albe pentru contrast maxim */
+  }
 }
-/* Aici se termină fișierul, fără nicio acoladă în plus */
