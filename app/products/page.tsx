@@ -4,7 +4,7 @@ import ProductCard from "@/app/components/ProductCard";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { allProducts } from "@/app/data/products"; // <-- IMPORTĂM lista centrală
+import { allProducts } from "@/app/data/products";
 
 // Variante de animație
 const containerVariants: Variants = {
@@ -17,7 +17,7 @@ const itemVariants: Variants = {
 };
 
 export default function ProductsPage() {
-  const featuredProduct = allProducts[3]; // Alegem Colombia Supremo ca produs recomandat
+  const featuredProduct = allProducts[0]; // Produsul recomandat este acum Cana
 
   return (
     <div className="container mx-auto px-6 py-12 space-y-24">
@@ -28,13 +28,13 @@ export default function ProductsPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Colecția Noastră</h1>
+        <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Meniu & Magazin</h1>
         <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-accent)] to-[var(--secondary-accent)]">
-          Descoperă Aroma Perfectă
+          Gusturi Unice & Produse Artizanale
         </h2>
       </motion.section>
 
-      {/* --- PRODUSUL RECOMANDAT --- */}
+      {/* --- PRODUSUL RECOMANDAT (Cana) --- */}
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -46,10 +46,10 @@ export default function ProductsPage() {
             <Image src={featuredProduct.imageUrl} alt={featuredProduct.name} fill className="object-cover" />
           </div>
           <div className="flex flex-col items-start">
-            <span className="text-sm font-sans uppercase tracking-widest text-[var(--primary-accent)] mb-2">Recomandarea Lunii</span>
+            <span className="text-sm font-sans uppercase tracking-widest text-[var(--primary-accent)] mb-2">Produs Recomandat</span>
             <h3 className="text-4xl font-bold mb-4">{featuredProduct.name}</h3>
             <p className="text-gray-400 font-sans mb-6">
-              Un clasic perfect echilibrat, cu note catifelate de ciocolată și caramel. Alegerea ideală pentru a începe orice zi cu o notă de rafinament.
+              Începe-ți fiecare dimineață cu stil. Cana "Aura" este fabricată din ceramică de înaltă calitate, perfectă pentru a savura cafeaua preferată.
             </p>
             <Link href={`/product/${featuredProduct.slug}`} className="bg-[var(--secondary-accent)] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:bg-blue-500">
               Vezi Detalii
@@ -66,20 +66,15 @@ export default function ProductsPage() {
         variants={containerVariants}
       >
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold">Explorează Toate Sortimentele</h2>
+            <h2 className="text-4xl font-bold">Explorează Toate Produsele</h2>
         </div>
         <div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {allProducts.map((product) => (
             <motion.div key={product.slug} variants={itemVariants}>
-              <ProductCard
-                name={product.name}
-                origin={product.origin}
-                price={product.price}
-                imageUrl={product.imageUrl}
-                slug={product.slug}
-              />
+              {/* AICI ESTE CORECTURA: Trimitem toate datele produsului */}
+              <ProductCard {...product} />
             </motion.div>
           ))}
         </div>
@@ -87,4 +82,3 @@ export default function ProductsPage() {
     </div>
   );
 }
-

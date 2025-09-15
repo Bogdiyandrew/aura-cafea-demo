@@ -1,46 +1,55 @@
-// app/data/products.ts
-
 // Aici definim cum arată un obiect "produs"
 export interface Product {
   name: string;
   origin: string;
-  price: number;
+  price?: number; // Prețul este acum opțional (are "?" la final)
+  isSellable?: boolean; // O proprietate pentru a ști dacă e de vânzare
   imageUrl: string;
   slug: string;
   description: string;
   tastingNotes: string[];
 }
 
-// Aceasta este lista ta de produse. AICI vei face toate modificările.
+// Aceasta este noua ta listă de produse. Aici vei face toate modificările.
 export const allProducts: Product[] = [
+  // --- PRODUS DE VÂNZARE ---
   {
-  name: 'Iced Coffee',
-  origin: 'Algeria (Mazagran), popularizat ulterior în Japonia și SUA',
-  price: 20.00,
-  imageUrl: '/images/iced-coffee.jpg',
-  slug: 'iced-coffee',
-  description: 'O băutură răcoritoare, preparată din cafea fierbinte răcită rapid și servită peste cuburi de gheață. Gust echilibrat, intensitatea cafelei este păstrată, dar senzația este mai ușoară și revigorantă.',
-  tastingNotes: ['Cafea intensă', 'Note caramelizate', 'Amăreală plăcută', 'Răcoritor']
-},
+    name: 'Cana de Cafea "Aura"',
+    origin: 'Design Artizanal, România',
+    price: 45.00,
+    isSellable: true,
+    imageUrl: '/images/aura-mug.jpg', // Asigură-te că adaugi o imagine pentru cană în `public/images`
+    slug: 'cana-aura',
+    description: 'Începe-ți fiecare dimineață cu stil. Cana "Aura" este fabricată din ceramică de înaltă calitate, cu un design minimalist și logo-ul nostru gravat subtil. Perfectă pentru a savura cafeaua preferată.',
+    tastingNotes: ['Ceramică fină', 'Design minimalist', 'Logo gravat', 'Capacitate 350ml']
+  },
+
+  // --- PRODUSE DE PREZENTARE (NU SUNT DE VÂNZARE) ---
   {
-  name: 'Cold Brew',
-  origin: 'Japonia (Kyoto-style), popularizat în SUA',
-  price: 22.00,
-  imageUrl: '/images/cold-brew.webp',
-  slug: 'cold-brew',
-  description: 'O cafea preparată prin extracție lentă, la rece, timp de 12–24 de ore. Rezultatul este o băutură catifelată, cu aciditate scăzută și arome naturale mai dulci. Perfectă pentru zilele calde și pentru cei care preferă o cafea mai blândă, dar intensă.',
-  tastingNotes: ['Ciocolată', 'Nucă', 'Caramel dulce', 'Catifelat']
-},
+    name: 'Iced Coffee',
+    origin: 'Algeria (Mazagran), popularizat în Japonia și SUA',
+    // Fără preț și isSellable (vor fi undefined)
+    imageUrl: '/images/iced-coffee.jpg',
+    slug: 'iced-coffee',
+    description: 'O băutură răcoritoare, preparată din cafea fierbinte răcită rapid și servită peste cuburi de gheață. Gust echilibrat și revigorant.',
+    tastingNotes: ['Cafea intensă', 'Note caramelizate', 'Răcoritor']
+  },
   {
-  name: 'Frappe',
-  origin: 'Grecia',
-  price: 18.00,
-  imageUrl: '/images/frappe3.webp',
-  slug: 'frappe',
-  description: 'Băutura iconică a Greciei, preparată din cafea instant sau espresso, spumă densă, gheață și lapte. Este o alegere răcoritoare și energizantă, perfectă pentru zilele călduroase sau pentru cei care preferă o cafea mai lejeră și dulce.',
-  tastingNotes: ['Cafea intensă', 'Spumă cremoasă', 'Dulce echilibrat', 'Răcoritor']
-},
-  // --- AICI POȚI ADĂUGA UN PRODUS NOU ---
+    name: 'Cold Brew',
+    origin: 'Japonia (Kyoto-style), popularizat în SUA',
+    imageUrl: '/images/cold-brew.webp',
+    slug: 'cold-brew',
+    description: 'O cafea preparată prin extracție lentă, la rece. Rezultatul este o băutură catifelată, cu aciditate scăzută și arome naturale mai dulci.',
+    tastingNotes: ['Ciocolată', 'Nucă', 'Caramel dulce', 'Catifelat']
+  },
+  {
+    name: 'Frappe',
+    origin: 'Grecia',
+    imageUrl: '/images/frappe3.webp',
+    slug: 'frappe',
+    description: 'Băutura iconică a Greciei, preparată din cafea instant sau espresso, spumă densă, gheață și lapte.',
+    tastingNotes: ['Spumă cremoasă', 'Dulce echilibrat', 'Răcoritor']
+  },
   {
   name: 'Affogato',
   origin: 'Italia',
