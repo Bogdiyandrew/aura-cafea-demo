@@ -3,13 +3,9 @@
 import ProductCard from "./components/ProductCard";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import { allProducts } from "@/app/data/products"; // <-- 1. IMPORTĂM lista centrală
 
-// Datele simulate
-const featuredProducts = [
-  { name: 'Ethiopia Yirgacheffe', origin: 'Etiopia', price: 55.00, imageUrl: '/images/ethiopia-yirgacheffe.jpg', slug: 'ethiopia-yirgacheffe' },
-  { name: 'Colombia Supremo', origin: 'Columbia', price: 49.50, imageUrl: '/images/colombia-supremo.jpg', slug: 'colombia-supremo' },
-  { name: 'Sumatra Mandheling', origin: 'Indonezia', price: 62.00, imageUrl: '/images/sumatra-mandheling.jpg', slug: 'sumatra-mandheling' }
-];
+// Datele simulate pentru testimoniale
 const testimonials = [
     { quote: "Cea mai bună cafea de specialitate pe care am băut-o în România...", author: "Andrei Popescu", title: "Pasionat de Cafea" },
     { quote: "Procesul de comandă a fost extrem de simplu, iar livrarea rapidă...", author: "Elena Ionescu", title: "Client Fidel" },
@@ -31,6 +27,9 @@ const heroItemVariants: Variants = {
 }
 
 export default function HomePage() {
+  // 2. Selectăm primele 3 produse din lista centrală pentru a le afișa ca recomandări
+  const featuredProducts = allProducts.slice(0, 3);
+
   return (
     <main>
       <section className="relative flex h-screen items-center justify-center">
@@ -38,43 +37,39 @@ export default function HomePage() {
           <video autoPlay loop muted playsInline className="h-full w-full object-cover">
             <source src="/videos/coffee_making.mp4" type="video/mp4" />
           </video>
-          {/* MODIFICARE: Gradient mai puternic pentru contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
         </div>
 
         <div className="relative z-10 text-center p-4 flex flex-col items-center">
             <motion.h1 
               className="text-6xl md:text-8xl font-bold mb-4 tracking-tight text-aurora"
-              style={{ textShadow: '2px 2px 15px rgba(0,0,0,0.5)' }} // MODIFICARE: Am adăugat text-shadow
+              style={{ textShadow: '2px 2px 15px rgba(0,0,0,0.5)' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
               Aura.
             </motion.h1>
-
             <motion.h2 
               variants={heroItemVariants}
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.8 }}
               className="text-4xl md:text-6xl font-bold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-accent)] to-[var(--secondary-accent)]"
-              style={{ textShadow: '2px 2px 15px rgba(0,0,0,0.5)' }} // MODIFICARE: Am adăugat text-shadow
+              style={{ textShadow: '2px 2px 15px rgba(0,0,0,0.5)' }}
             >
               Cafea Artizanală.
             </motion.h2>
-            
             <motion.p 
               variants={heroItemVariants}
               initial="hidden"
               animate="visible"
               transition={{ delay: 1.2 }}
               className="text-lg text-gray-200 max-w-2xl mx-auto mb-10 font-sans"
-              style={{ textShadow: '1px 1px 10px rgba(0,0,0,0.7)' }} // MODIFICARE: Am adăugat text-shadow
+              style={{ textShadow: '1px 1px 10px rgba(0,0,0,0.7)' }}
             >
               Descoperă o lume a aromelor pure, unde fiecare bob spune o poveste unică, de la origine până în ceașca ta.
             </motion.p>
-            
             <motion.div
               variants={heroItemVariants}
               initial="hidden"
@@ -119,4 +114,5 @@ export default function HomePage() {
       </div>
     </main>
   );
-} 
+}
+

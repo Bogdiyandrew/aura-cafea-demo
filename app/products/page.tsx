@@ -3,14 +3,8 @@
 import ProductCard from "@/app/components/ProductCard";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image"; // <-- AICI ESTE CORECTURA: Am adăugat importul lipsă
-
-// Datele simulate
-const allProducts = [
-  { name: 'Ethiopia Yirgacheffe', origin: 'Etiopia', price: 55.00, imageUrl: '/images/ethiopia-yirgacheffe.jpg', slug: 'ethiopia-yirgacheffe' },
-  { name: 'Colombia Supremo', origin: 'Columbia', price: 49.50, imageUrl: '/images/colombia-supremo.jpg', slug: 'colombia-supremo' },
-  { name: 'Sumatra Mandheling', origin: 'Indonezia', price: 62.00, imageUrl: '/images/sumatra-mandheling.jpg', slug: 'sumatra-mandheling' }
-];
+import Image from "next/image";
+import { allProducts } from "@/app/data/products"; // <-- IMPORTĂM lista centrală
 
 // Variante de animație
 const containerVariants: Variants = {
@@ -23,7 +17,7 @@ const itemVariants: Variants = {
 };
 
 export default function ProductsPage() {
-  const featuredProduct = allProducts[1]; // Alegem Colombia Supremo ca produs recomandat
+  const featuredProduct = allProducts[3]; // Alegem Colombia Supremo ca produs recomandat
 
   return (
     <div className="container mx-auto px-6 py-12 space-y-24">
