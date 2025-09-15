@@ -21,7 +21,6 @@ export default function ProductsPage() {
 
   return (
     <div className="container mx-auto px-6 py-12 space-y-24">
-      {/* --- HERO SECTION --- */}
       <motion.section 
         className="text-center pt-16 pb-8"
         initial={{ opacity: 0, y: -20 }}
@@ -34,7 +33,6 @@ export default function ProductsPage() {
         </h2>
       </motion.section>
 
-      {/* --- PRODUSUL RECOMANDAT (Cana) --- */}
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -48,8 +46,9 @@ export default function ProductsPage() {
           <div className="flex flex-col items-start">
             <span className="text-sm font-sans uppercase tracking-widest text-[var(--primary-accent)] mb-2">Produs Recomandat</span>
             <h3 className="text-4xl font-bold mb-4">{featuredProduct.name}</h3>
+            {/* AICI ESTE CORECTURA: Am înlocuit ghilimelele */}
             <p className="text-gray-400 font-sans mb-6">
-              Începe-ți fiecare dimineață cu stil. Cana "Aura" este fabricată din ceramică de înaltă calitate, perfectă pentru a savura cafeaua preferată.
+              Începe-ți fiecare dimineață cu stil. Cana &ldquo;Aura&rdquo; este fabricată din ceramică de înaltă calitate, perfectă pentru a savura cafeaua preferată.
             </p>
             <Link href={`/product/${featuredProduct.slug}`} className="bg-[var(--secondary-accent)] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:bg-blue-500">
               Vezi Detalii
@@ -58,7 +57,6 @@ export default function ProductsPage() {
         </div>
       </motion.section>
 
-      {/* --- TOATE PRODUSELE --- */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -73,7 +71,6 @@ export default function ProductsPage() {
         >
           {allProducts.map((product) => (
             <motion.div key={product.slug} variants={itemVariants}>
-              {/* AICI ESTE CORECTURA: Trimitem toate datele produsului */}
               <ProductCard {...product} />
             </motion.div>
           ))}
