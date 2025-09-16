@@ -38,14 +38,14 @@ export default function CartPage() {
                   <p className="text-gray-400 text-sm font-sans">{item.price.toFixed(2)} RON</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <button onClick={() => decreaseQuantity(item.slug)} className="bg-white/10 hover:bg-white/20 h-8 w-8 rounded-full font-bold transition-all duration-200 hover:scale-110">-</button>
+                  <button onClick={() => decreaseQuantity(item.slug)} className="bg-white/10 hover:bg-white/20 h-8 w-8 rounded-full font-bold transition-all duration-200 hover:scale-110 cursor-pointer">-</button>
                   <span className="font-semibold text-lg w-8 text-center font-sans">{item.quantity}</span>
-                  <button onClick={() => addToCart(item)} className="bg-white/10 hover:bg-white/20 h-8 w-8 rounded-full font-bold transition-all duration-200 hover:scale-110">+</button>
+                  <button onClick={() => addToCart(item)} className="bg-white/10 hover:bg-white/20 h-8 w-8 rounded-full font-bold transition-all duration-200 hover:scale-110 cursor-pointer">+</button>
                 </div>
                 <div className="font-bold text-lg w-24 text-right font-sans text-white">
                   {(item.price * item.quantity).toFixed(2)} RON
                 </div>
-                <button onClick={() => removeFromCart(item.slug)} className="text-gray-500 hover:text-white transition-colors">
+                <button onClick={() => removeFromCart(item.slug)} className="text-gray-500 hover:text-white transition-colors cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
               </div>
@@ -69,7 +69,7 @@ export default function CartPage() {
                 <span>{totalPrice.toFixed(2)} RON</span>
                 </div>
             </div>
-            <button className="mt-8 w-full bg-[var(--primary-accent)] hover:bg-violet-500 text-white font-bold py-3 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:-translate-y-px">
+            <button className="mt-8 w-full bg-[var(--primary-accent)] hover:bg-violet-500 text-white font-bold py-3 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:-translate-y-px cursor-pointer">
               Finalizează Comanda
             </button>
           </div>

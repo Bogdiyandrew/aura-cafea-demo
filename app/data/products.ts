@@ -18,7 +18,7 @@ export const allProducts: Product[] = [
     origin: 'Design Artizanal, România',
     price: 45.00,
     isSellable: true,
-    imageUrl: '/images/aura-mug.jpg', // Asigură-te că adaugi o imagine pentru cană în `public/images`
+    imageUrl: '/images/aura-mug.png', // Asigură-te că adaugi o imagine pentru cană în `public/images`
     slug: 'cana-aura',
     description: 'Începe-ți fiecare dimineață cu stil. Cana "Aura" este fabricată din ceramică de înaltă calitate, cu un design minimalist și logo-ul nostru gravat subtil. Perfectă pentru a savura cafeaua preferată.',
     tastingNotes: ['Ceramică fină', 'Design minimalist', 'Logo gravat', 'Capacitate 350ml']

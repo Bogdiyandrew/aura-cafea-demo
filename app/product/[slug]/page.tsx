@@ -75,7 +75,7 @@ export default function ProductPage() {
             {product.isSellable ? (
                 <button 
                 onClick={handleAddToCart}
-                className="mt-8 bg-[var(--primary-accent)] hover:bg-violet-500 text-white font-bold py-3 px-6 rounded-full text-lg w-full transition-all duration-300 hover:scale-105 hover:-translate-y-px"
+                className="mt-8 bg-[var(--primary-accent)] hover:bg-violet-500 text-white font-bold py-3 px-6 rounded-full text-lg w-full transition-all duration-300 hover:scale-105 hover:-translate-y-px cursor-pointer"
                 >
                 Adaugă în Coș
                 </button>

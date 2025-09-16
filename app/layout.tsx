@@ -21,6 +21,9 @@ const lato = Lato({
 export const metadata: Metadata = {
   title: "Aura - Magazin Online de Cafea Artizanală",
   description: "Un studiu de caz pentru un brand de e-commerce premium.",
+  icons: {
+    icon: '/logo3.png',
+  },
 };
 
 export default function RootLayout({
