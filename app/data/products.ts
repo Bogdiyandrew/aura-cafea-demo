@@ -1,41 +1,39 @@
-// Aici definim cum arată un obiect "produs"
 export interface Product {
   name: string;
   origin: string;
-  price?: number; // Prețul este acum opțional (are "?" la final)
-  isSellable?: boolean; // O proprietate pentru a ști dacă e de vânzare
+  price?: number; 
+  isSellable?: boolean; 
   imageUrl: string;
   slug: string;
   description: string;
   tastingNotes: string[];
 }
 
-// Aceasta este noua ta listă de produse. Aici vei face toate modificările.
+
 export const allProducts: Product[] = [
-  // --- PRODUS DE VÂNZARE ---
+
   {
-    name: 'Cana de Cafea "Aura"',
-    origin: 'Design Artizanal, România',
+    name: 'Cana de cafea "Aura"',
+    origin: 'Design artizanal, România',
     price: 45.00,
     isSellable: true,
-    imageUrl: '/images/aura-mug.png', // Asigură-te că adaugi o imagine pentru cană în `public/images`
+    imageUrl: '/images/aura-mug.png', 
     slug: 'cana-aura',
     description: 'Începe-ți fiecare dimineață cu stil. Cana "Aura" este fabricată din ceramică de înaltă calitate, cu un design minimalist și logo-ul nostru gravat subtil. Perfectă pentru a savura cafeaua preferată.',
     tastingNotes: ['Ceramică fină', 'Design minimalist', 'Logo gravat', 'Capacitate 350ml']
   },
 
-  // --- PRODUSE DE PREZENTARE (NU SUNT DE VÂNZARE) ---
+
   {
-    name: 'Iced Coffee',
+    name: 'Iced coffee',
     origin: 'Algeria (Mazagran), popularizat în Japonia și SUA',
-    // Fără preț și isSellable (vor fi undefined)
     imageUrl: '/images/iced-coffee.jpg',
     slug: 'iced-coffee',
     description: 'O băutură răcoritoare, preparată din cafea fierbinte răcită rapid și servită peste cuburi de gheață. Gust echilibrat și revigorant.',
     tastingNotes: ['Cafea intensă', 'Note caramelizate', 'Răcoritor']
   },
   {
-    name: 'Cold Brew',
+    name: 'Cold brew',
     origin: 'Japonia (Kyoto-style), popularizat în SUA',
     imageUrl: '/images/cold-brew.webp',
     slug: 'cold-brew',
@@ -60,7 +58,7 @@ export const allProducts: Product[] = [
   tastingNotes: ['Espresso intens', 'Înghețată de vanilie', 'Amar-dulce', 'Cremos']
 },
   {
-  name: 'Irish Coffee',
+  name: 'Irish cofffee',
   origin: 'Irlanda',
   price: 30.00,
   imageUrl: '/images/irish-cofee2.jpg',

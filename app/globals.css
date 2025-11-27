@@ -1,19 +1,18 @@
 @import "tailwindcss";
 
-/* 1. Definirea noii palete de culori și a fonturilor */
 @layer base {
   :root {
-    --background: #0D0B14; /* Un indigo foarte închis */
-    --foreground: #E0E0E0; /* Un alb-gri pentru text */
-    --primary-accent: #8A63D2; /* Un violet vibrant */
-    --secondary-accent: #4A90E2; /* Un albastru-cyan */
+    --background: #0D0B14; 
+    --foreground: #E0E0E0; 
+    --primary-accent: #8A63D2; 
+    --secondary-accent: #4A90E2; 
     
     --font-playfair: '__Playfair_Display_102737', 'serif';
     --font-lato: '__Lato_321e8e', 'sans-serif';
   }
 }
 
-/* 2. Implementarea fundalului animat "Aurora" */
+
 @layer base {
   body::before {
     content: '';
@@ -37,7 +36,6 @@
   }
 }
 
-/* 3. Stilurile de bază actualizate */
 @layer base {
   body {
     background-color: var(--background);
@@ -53,7 +51,6 @@
   }
 }
 
-/* NOU: Animația "Text Aurora" */
 @layer utilities {
   .text-aurora {
     background-image: linear-gradient(

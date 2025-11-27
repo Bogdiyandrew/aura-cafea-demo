@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { allProducts } from "@/app/data/products";
 
-// Variante de animație
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
@@ -17,7 +16,7 @@ const itemVariants: Variants = {
 };
 
 export default function ProductsPage() {
-  const featuredProduct = allProducts[0]; // Produsul recomandat este acum Cana
+  const featuredProduct = allProducts[0]; 
 
   return (
     <div className="container mx-auto px-6 py-12 space-y-24">
@@ -27,9 +26,9 @@ export default function ProductsPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Meniu & Magazin</h1>
+        <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Meniu & magazin</h1>
         <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-accent)] to-[var(--secondary-accent)]">
-          Gusturi Unice & Produse Artizanale
+          Gusturi unice & produse artizanale
         </h2>
       </motion.section>
 
@@ -46,12 +45,11 @@ export default function ProductsPage() {
           <div className="flex flex-col items-start">
             <span className="text-sm font-sans uppercase tracking-widest text-[var(--primary-accent)] mb-2">Produs Recomandat</span>
             <h3 className="text-4xl font-bold mb-4">{featuredProduct.name}</h3>
-            {/* AICI ESTE CORECTURA: Am înlocuit ghilimelele */}
             <p className="text-gray-400 font-sans mb-6">
               Începe-ți fiecare dimineață cu stil. Cana &ldquo;Aura&rdquo; este fabricată din ceramică de înaltă calitate, perfectă pentru a savura cafeaua preferată.
             </p>
             <Link href={`/product/${featuredProduct.slug}`} className="bg-[var(--secondary-accent)] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:bg-blue-500">
-              Vezi Detalii
+              Vezi detalii
             </Link>
           </div>
         </div>
@@ -64,7 +62,7 @@ export default function ProductsPage() {
         variants={containerVariants}
       >
         <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold">Explorează Toate Produsele</h2>
+            <h2 className="text-4xl font-bold">Explorează toate produsele</h2>
         </div>
         <div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"

@@ -10,7 +10,6 @@ const cardVariants: Variants = {
 export default function ContactPage() {
   return (
     <div className="container mx-auto px-6 py-12 space-y-24">
-      {/* --- HERO SECTION --- */}
       <motion.section 
         className="text-center pt-16 pb-8"
         initial={{ opacity: 0, y: -20 }}
@@ -23,7 +22,6 @@ export default function ContactPage() {
         </h2>
       </motion.section>
       
-      {/* --- CARD UNIC DE CONTACT --- */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -38,7 +36,6 @@ export default function ContactPage() {
                 <p className="text-gray-400 font-sans text-lg mb-8 max-w-2xl">Cea mai rapidă cale de a intra în legătură cu noi și de a discuta despre ideile tale este prin email sau telefon.</p>
                 
                 <div className="flex flex-col sm:flex-row gap-6 mt-4">
-                    {/* Buton Email */}
                     <a 
                         href="mailto:suport@digitura.ro" 
                         className="bg-[var(--primary-accent)] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:bg-violet-500 whitespace-nowrap flex items-center justify-center gap-3"
@@ -46,7 +43,6 @@ export default function ContactPage() {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                         <span>suport@digitura.ro</span>
                     </a>
-                    {/* Buton Telefon */}
                     <a 
                         href="tel:0750488329" 
                         className="bg-[var(--secondary-accent)] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:bg-blue-500 whitespace-nowrap flex items-center justify-center gap-3"

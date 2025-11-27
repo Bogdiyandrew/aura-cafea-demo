@@ -46,7 +46,6 @@ export default function RootLayout({
           />
           <div className="flex flex-col min-h-screen">
             <Header />
-            {/* AICI ESTE SCHIMBAREA: Am eliminat clasele de pe <main> */}
             <main className="flex-grow">
               {children}
             </main>

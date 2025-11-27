@@ -15,7 +15,7 @@ export default function ProductPage() {
   const product = allProducts.find((p) => p.slug === slug);
 
   const handleAddToCart = () => {
-    // AICI ESTE CORECTURA: Ne asigurăm că produsul există și poate fi vândut
+
     if (product && product.isSellable) {
       addToCart(product);
       toast.success(`${product.name} a fost adăugat în coș!`);
@@ -51,7 +51,6 @@ export default function ProductPage() {
             <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">{product.name}</h1>
             <p className="text-lg text-gray-400 -mt-2 font-sans">{product.origin}</p>
             
-            {/* Afișăm prețul sau un mesaj, în funcție de tipul produsului */}
             {product.isSellable && product.price ? (
                 <p className="text-4xl font-bold text-white my-4 font-sans">{product.price.toFixed(2)} RON</p>
             ) : (
@@ -71,7 +70,7 @@ export default function ProductPage() {
                 </div>
             </div>
             
-            {/* Afișăm butonul de adăugare în coș sau un link spre pagina de contact */}
+
             {product.isSellable ? (
                 <button 
                 onClick={handleAddToCart}

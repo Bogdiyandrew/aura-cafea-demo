@@ -3,16 +3,16 @@
 import ProductCard from "./components/ProductCard";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { allProducts } from "@/app/data/products"; // <-- 1. IMPORTĂM lista centrală
+import { allProducts } from "@/app/data/products";
 
-// Datele simulate pentru testimoniale
+
 const testimonials = [
     { quote: "Cea mai bună cafea de specialitate pe care am băut-o în România...", author: "Andrei Popescu", title: "Pasionat de Cafea" },
     { quote: "Procesul de comandă a fost extrem de simplu, iar livrarea rapidă...", author: "Elena Ionescu", title: "Client Fidel" },
     { quote: "Aura a devenit ritualul meu de dimineață. O adevărată încântare.", author: "Mihai Georgescu", title: "Barista Acasă" }
 ];
 
-// Variante de animație
+
 const sectionContainerVariants: Variants = { 
   hidden: { opacity: 0 }, 
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -27,7 +27,6 @@ const heroItemVariants: Variants = {
 }
 
 export default function HomePage() {
-  // 2. Selectăm primele 3 produse din lista centrală pentru a le afișa ca recomandări
   const featuredProducts = allProducts.slice(0, 3);
 
   return (
@@ -58,7 +57,7 @@ export default function HomePage() {
               className="text-4xl md:text-6xl font-bold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-accent)] to-[var(--secondary-accent)]"
               style={{ textShadow: '2px 2px 15px rgba(0,0,0,0.5)' }}
             >
-              Cafea Artizanală.
+              cafea artizanalǎ.
             </motion.h2>
             <motion.p 
               variants={heroItemVariants}
@@ -77,7 +76,7 @@ export default function HomePage() {
               transition={{ delay: 1.4 }}
             >
               <Link href="/products" className="bg-[var(--primary-accent)] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:bg-violet-500 shadow-lg shadow-black/30">
-                Explorează Colecția
+                Explorează colecția
               </Link>
             </motion.div>
         </div>
@@ -87,10 +86,9 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* Restul paginii */}
       <div className="bg-[var(--background)] relative z-10 space-y-24 py-24">
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={sectionContainerVariants}>
-          <h2 className="text-4xl font-bold text-center mb-12">Recomandările Noastre</h2>
+          <h2 className="text-4xl font-bold text-center mb-12">Recomandările noastre</h2>
           <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProducts.map((product) => (
               <motion.div key={product.slug} variants={itemVariants}>

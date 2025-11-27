@@ -1,7 +1,6 @@
 const CoffeeVideo = () => {
   return (
     <div className="relative my-16 h-96 w-full overflow-hidden rounded-lg shadow-2xl md:h-[500px]">
-      {/* VIDEO absolut, ca în varianta cu inline styles */}
       <video
         autoPlay
         loop
@@ -14,7 +13,6 @@ const CoffeeVideo = () => {
         Browser-ul tău nu suportă tag-ul video.
       </video>
 
-      {/* Overlay + conținut */}
       <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50">
         <div className="p-4 text-center">
           <h2

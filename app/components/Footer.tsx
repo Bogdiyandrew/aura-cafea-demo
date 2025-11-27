@@ -3,7 +3,6 @@ const Footer = () => {
     <footer className="bg-black/20 mt-24 py-12 border-t border-white/10 backdrop-blur-lg">
       <div className="container mx-auto px-6 text-center text-gray-400 space-y-8">
         
-        {/* Secțiunea de atenționare, stilizată distinct */}
         <div className="max-w-3xl mx-auto text-xs border border-yellow-500/30 bg-yellow-900/20 p-4 rounded-lg">
           <h4 className="font-bold text-yellow-400 mb-2 uppercase tracking-widest">ATENȚIE</h4>
           <p className="text-yellow-500 font-sans">
@@ -11,7 +10,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Secțiunea principală a footer-ului */}
         <div>
             <p className="text-2xl font-bold font-serif text-white mb-2 tracking-wider">AURA</p>
             <p className="text-sm font-sans">

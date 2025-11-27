@@ -5,7 +5,7 @@ import { Product } from '@/app/data/products';
 
 interface CartItem extends Product {
   quantity: number;
-  price: number; // întotdeauna number în coș
+  price: number;
 }
 
 interface CartContextType {
@@ -17,7 +17,6 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// Type guard: îngustează tipul la un product cu price: number
 function hasPrice(p: Product): p is Product & { price: number } {
   return typeof p.price === 'number';
 }
@@ -26,7 +25,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const addToCart = (product: Product) => {
-    if (!hasPrice(product)) return; // ieșim dacă nu are preț
+    if (!hasPrice(product)) return;
 
     setCartItems(prevItems => {
       const existingItem = prevItems.find(item => item.slug === product.slug);
@@ -37,7 +36,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             : item
         );
       }
-      // aici TS știe sigur că product.price e number
       return [...prevItems, { ...product, quantity: 1, price: product.price }];
     });
   };

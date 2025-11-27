@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/app/data/products';
 
-// AICI ESTE CORECTURA: Am înlocuit "interface" cu "type"
 type ProductCardProps = Product;
 
 const ProductCard = ({ name, origin, price, imageUrl, slug, isSellable }: ProductCardProps) => {
@@ -20,7 +19,6 @@ const ProductCard = ({ name, origin, price, imageUrl, slug, isSellable }: Produc
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="w-12 h-12 border-2 border-white/50 rounded-full flex items-center justify-center">
-              {/* Am schimbat icon-ul în funcție de tipul produsului */}
               {isSellable ? (
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
               ) : (

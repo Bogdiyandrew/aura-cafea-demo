@@ -6,17 +6,14 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 
-// NOU: Am definit variantele de animație separat pentru a fi mai lizibile
 const headerVariants: Variants = {
-  // Starea inițială, înainte de animație (complet deasupra ecranului și invizibil)
   hidden: { y: '-100%', opacity: 0 },
-  // Starea finală, după animație
   visible: {
     y: '0%',
     opacity: 1,
     transition: {
-      duration: 0.8, // Durată mai lungă pentru o mișcare mai lină
-      ease: [0.6, 0.05, 0.01, 0.99] // Un "ease" custom pentru un efect fluid, non-liniar
+      duration: 0.8, 
+      ease: [0.6, 0.05, 0.01, 0.99] 
     }
   }
 };
@@ -39,7 +36,7 @@ const Header = () => {
   const navLinks = [
     { href: "/", name: "Acasă" },
     { href: "/products", name: "Produse" },
-    { href: "/about", name: "Povestea Noastră" },
+    { href: "/about", name: "Povestea noastrǎ" },
     { href: "/contact", name: "Contact" },
   ];
 
@@ -48,7 +45,7 @@ const Header = () => {
       variants={headerVariants}
       initial="hidden"
       animate="visible"
-      // MODIFICARE: Tranziție CSS mai lentă (500ms) pentru apariția fundalului la scroll
+
       className={`sticky top-0 z-50 transition-all duration-500 ${
         hasScrolled 
         ? 'bg-black/40 backdrop-blur-lg border-b border-white/10' 
@@ -68,7 +65,6 @@ const Header = () => {
                 <motion.div 
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--primary-accent)]"
                   layoutId="underline"
-                  // NOU: Animație de tip "spring" pentru un efect elastic și natural
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
